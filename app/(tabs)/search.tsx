@@ -3,10 +3,12 @@ import React from 'react'
 
 const Search = () => {
   return (
-    <View>
-      <Text>Search</Text>
+    <View
+      className="flex-1 items-center justify-center bg-[#E1E2E3]"
+    >
+      <Text className="text-light-100 text-2xl font-bold underline">search</Text>
     </View>
-  )
+  );
 }
 
 export default Search

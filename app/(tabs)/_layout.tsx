@@ -97,13 +97,17 @@ const TabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
     }
   })
 
+  useEffect(() => {
+    tabPositionX.value = withSpring(buttonWidth * state.index, { duration: 1500 });
+  }, [state.index, buttonWidth]);
+
   return (
     <View onLayout={onTabbarLayout} style={styles.tabber}>
       <Animated.View style={[
         styles.tabbarItemBg,
         animatedStyle,
         {
-          backgroundColor: colors.primary,
+          backgroundColor: '#ab8bff',
           height: dimensions.height - 15,
           width: buttonWidth - 25
         }
@@ -161,8 +165,8 @@ export default function TabLayout() {
   return (
     <Tabs tabBar={props => <TabBar {...props} />}>
       <Tabs.Screen name="index" options={{ title: 'Home', headerShown: false }} />
-      <Tabs.Screen name="saved" options={{ title: 'Saved', headerShown: false }} />
       <Tabs.Screen name="search" options={{ title: 'Search', headerShown: false }} />
+      <Tabs.Screen name="saved" options={{ title: 'Saved', headerShown: false }} />
       <Tabs.Screen name="profile" options={{ title: 'Profile', headerShown: false }} />
     </Tabs>
   );
