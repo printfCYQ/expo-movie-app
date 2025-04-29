@@ -2,11 +2,26 @@
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
-import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { useRouter } from "expo-router";
-
+import { useEffect } from "react";
+import { fetchMovies } from '@/services/api'
 export default function index() {
   const router = useRouter();
+
+  useEffect(() => {
+    const query = async () => {
+      try {
+        const res = await fetchMovies({
+          query: "batman",
+        })
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    query()
+  }, [])
 
   return (
     <View className="flex-1 bg-primary">
